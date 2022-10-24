@@ -1,0 +1,32 @@
+{
+  "name": "@ghasemkiani/blockstream-api",
+  "version": "1.0.0",
+  "description": "A simple client for Blockstream.info API",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghasemkiani/blockstream-api.git"
+  },
+  "keywords": [
+    "blockstream",
+    "esplora",
+    "api",
+    "client",
+    "bitcoin",
+    "blockchain",
+    "explorer"
+  ],
+  "author": "Ghasem Kiani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghasemkiani/blockstream-api/issues"
+  },
+  "homepage": "https://github.com/ghasemkiani/blockstream-api#readme",
+  "dependencies": {
+    "@ghasemkiani/base": "gitlab:ghasemkiani/base"
+  }
+}
