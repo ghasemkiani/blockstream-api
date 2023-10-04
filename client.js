@@ -1,7 +1,29 @@
 import {cutil} from "@ghasemkiani/base";
 import {Obj} from "@ghasemkiani/base";
+import {fetch as toFetch} from "@ghasemkiani/fetch";
 
 class Client extends Obj {
+	static {
+		cutil.extend(this.prototype, {
+			proxify: true,
+			network: "mainnet",
+			urls: {
+				mainnet: "https://blockstream.info/api/",
+				testnet: "https://blockstream.info/testnet/api/",
+				liquid: "https://blockstream.info/liquid/api/",
+			},
+		});
+	}
+	toFetch(...rest) {
+		let client = this;
+		let {proxify} = client;
+		if (proxify) {
+			let [url, options] = rest;
+			return toFetch(url, options);
+		} else {
+			return fetch(...rest);
+		}
+	}
 	get url() {
 		let client = this;
 		let {network, urls} = client;
@@ -10,7 +32,7 @@ class Client extends Obj {
 	async toGet(path) {
 		let client = this;
 		let {url} = client;
-		let rsp = await fetch(url + path, {
+		let rsp = await client.toFetch(url + path, {
 			method: "GET",
 			headers: {},
 		});
@@ -20,7 +42,7 @@ class Client extends Obj {
 	async toPost(path, data) {
 		let client = this;
 		let {url} = client;
-		let rsp = await fetch(url + path, {
+		let rsp = await client.toFetch(url + path, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
@@ -33,7 +55,7 @@ class Client extends Obj {
 	async toPut(path, data) {
 		let client = this;
 		let {url} = client;
-		let rsp = await fetch(url + path, {
+		let rsp = await client.toFetch(url + path, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
@@ -46,7 +68,7 @@ class Client extends Obj {
 	async toDelete(path) {
 		let client = this;
 		let {url} = client;
-		let rsp = await fetch(url + path, {
+		let rsp = await client.toFetch(url + path, {
 			method: "DELETE",
 			headers: {},
 		});
@@ -65,13 +87,5 @@ class Client extends Obj {
 		return balance;
 	}
 }
-cutil.extend(Client.prototype, {
-	network: "mainnet",
-	urls: {
-		mainnet: "https://blockstream.info/api/",
-		testnet: "https://blockstream.info/testnet/api/",
-		liquid: "https://blockstream.info/liquid/api/",
-	},
-});
 
 export {Client};

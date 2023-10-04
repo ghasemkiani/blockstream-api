@@ -1,6 +1,6 @@
 {
 	"name": "@ghasemkiani/blockstream-api",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A simple client for Blockstream.info API",
 	"type": "module",
 	"main": "index.js",
@@ -27,6 +27,7 @@
 	},
 	"homepage": "https://github.com/ghasemkiani/blockstream-api#readme",
 	"dependencies": {
-		"@ghasemkiani/base": "github:ghasemkiani/base"
+		"@ghasemkiani/base": "github:ghasemkiani/base",
+		"@ghasemkiani/fetch": "github:ghasemkiani/fetch"
 	}
 }
