@@ -80,10 +80,21 @@ class Client extends Obj {
 		let info = await client.toGet(`/address/${address}`);
 		return info;
 	}
-	async toGetAddressBalance(address) {
+	async toGetUtxos(address) {
+		let client = this;
+		let info = await client.toGet(`/address/${address}/utxo`);
+		return info;
+	}
+	async toGetAddressBalance_(address) {
 		let client = this;
 		let info = await client.toGetAddressInfo(address);
-		let balance = (info.chain_stats.funded_txo_sum - info.chain_stats.spent_txo_sum) * 1e-8;
+		let balance_ = info.chain_stats.funded_txo_sum - info.chain_stats.spent_txo_sum;
+		return balance_;
+	}
+	async toGetAddressBalance(address) {
+		let client = this;
+		let balance_ = await client.toGetAddressBalance_(address);
+		let balance = balance_ * 1e-8;
 		return balance;
 	}
 }
