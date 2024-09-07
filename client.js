@@ -5,7 +5,7 @@ import { fetch as toFetch } from "@ghasemkiani/fetch";
 class Client extends Obj {
   static {
     cutil.extend(this.prototype, {
-      proxify: true,
+      proxify: false,
       network: "mainnet",
       urls: {
         mainnet: "https://blockstream.info/api/",
