@@ -1,6 +1,7 @@
 import { cutil } from "@ghasemkiani/base";
 import { Obj } from "@ghasemkiani/base";
 import { fetch as toFetch } from "@ghasemkiani/fetch";
+import { d } from "@ghasemkiani/decimal";
 
 class Client extends Obj {
   static {
@@ -92,14 +93,15 @@ class Client extends Obj {
   async toGetAddressBalance_(address) {
     let client = this;
     let info = await client.toGetAddressInfo(address);
-    let balance_ =
-      info.chain_stats.funded_txo_sum - info.chain_stats.spent_txo_sum;
+    let balance_ = d(info.chain_stats.funded_txo_sum)
+      .minus(info.chain_stats.spent_txo_sum)
+      .toFixed(0);
     return balance_;
   }
   async toGetAddressBalance(address) {
     let client = this;
     let balance_ = await client.toGetAddressBalance_(address);
-    let balance = balance_ * 1e-8;
+    let balance = d(balance_).mul(1e-8).toNumber();
     return balance;
   }
 }

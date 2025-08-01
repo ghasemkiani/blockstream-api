@@ -1,33 +1,34 @@
 {
-	"name": "@ghasemkiani/blockstream-api",
-	"version": "1.1.3",
-	"description": "A simple client for Blockstream.info API",
-	"type": "module",
-	"main": "index.js",
-	"scripts": {
-		"test": "node --test"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ghasemkiani/blockstream-api.git"
-	},
-	"keywords": [
-		"blockstream",
-		"esplora",
-		"api",
-		"client",
-		"bitcoin",
-		"blockchain",
-		"explorer"
-	],
-	"author": "Ghasem Kiani",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/ghasemkiani/blockstream-api/issues"
-	},
-	"homepage": "https://github.com/ghasemkiani/blockstream-api#readme",
-	"dependencies": {
-		"@ghasemkiani/base": "github:ghasemkiani/base",
-		"@ghasemkiani/fetch": "github:ghasemkiani/fetch"
-	}
+  "name": "@ghasemkiani/blockstream-api",
+  "version": "1.1.4",
+  "description": "A simple client for Blockstream.info API",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghasemkiani/blockstream-api.git"
+  },
+  "keywords": [
+    "blockstream",
+    "esplora",
+    "api",
+    "client",
+    "bitcoin",
+    "blockchain",
+    "explorer"
+  ],
+  "author": "Ghasem Kiani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghasemkiani/blockstream-api/issues"
+  },
+  "homepage": "https://github.com/ghasemkiani/blockstream-api#readme",
+  "dependencies": {
+    "@ghasemkiani/base": "github:ghasemkiani/base",
+    "@ghasemkiani/decimal": "github:ghasemkiani/decimal",
+    "@ghasemkiani/fetch": "github:ghasemkiani/fetch"
+  }
 }
