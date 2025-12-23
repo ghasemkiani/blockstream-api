@@ -124,6 +124,11 @@ class Client extends Obj {
     console.log(`Transaction Sent! TXID:\n${txid}`);
     return txid;
   }
+  async toGetFeeEstimates() {
+    let client = this;
+    let info = await client.toGet(`/fee-estimates`);
+    return info;
+  }
 }
 
 export { Client };
