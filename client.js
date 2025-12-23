@@ -104,6 +104,26 @@ class Client extends Obj {
     let balance = d(balance_).mul(1e-8).toNumber();
     return balance;
   }
+  async toBroadcast(rawTx) {
+    let client = this;
+    let broadcastUrl = client.url + `/address/${address}/tx`;
+    let rsp = await fetch(broadcastUrl, {
+      method: "POST",
+      body: rawTx,
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    });
+
+    if (!rsp.ok) {
+      let message = await rsp.text();
+      throw new Error(`Broadcast failed: ${message}`);
+    }
+
+    let txid = await rsp.text();
+    console.log(`Transaction Sent! TXID:\n${txid}`);
+    return txid;
+  }
 }
 
 export { Client };
